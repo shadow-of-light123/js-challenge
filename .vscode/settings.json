@@ -1,0 +1,37 @@
+{
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "terminal.integrated.profiles.windows": {
+    "Command Prompt": {
+      "path": "cmd.exe",
+      "args": []
+    }
+  },
+
+  // 1. 设置默认格式化器为 Prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // 2. 保存时自动格式化（关键）
+  "editor.formatOnSave": true,
+  // 3. 解决 ESLint 和 Prettier 冲突（若用 ESLint）
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  // 4. 确保 Prettier 生效的文件关联（覆盖所有常见文件）
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
