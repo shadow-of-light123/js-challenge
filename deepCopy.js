@@ -20,7 +20,7 @@ function deepCopy(obj, map = new Map()) {
   // 1. 边界条件处理
   // 如果不是对象或为null/undefined，直接返回原值
   // 基本类型（number/string/boolean/null/undefined/symbol/bigint）会直接返回
-  if (!obj || typeof obj !== "object") {
+  if (!obj || typeof obj !== 'object') {
     return obj
   }
 
@@ -49,7 +49,7 @@ function deepCopy(obj, map = new Map()) {
       // 递归拷贝：如果属性值是对象，继续深拷贝并传递map
       // 如果是基本类型，直接赋值
       newObj[key] =
-        typeof obj[key] === "object"
+        typeof obj[key] === 'object'
           ? deepCopy(obj[key], map) // 递归深拷贝，传递map处理循环引用
           : obj[key] // 基本类型直接复制值
     }
@@ -72,7 +72,7 @@ function deepCopy(obj, map = new Map()) {
 
 // 测试用例
 const obj1 = {
-  name: "小明",
+  name: '小明',
   age: 18,
   class: {
     grade: 2,
@@ -80,22 +80,22 @@ const obj1 = {
   },
 }
 
-console.log("原对象:", obj1)
+console.log('原对象:', obj1)
 const obj2 = deepCopy(obj1)
 obj2.class.grade = 3
-console.log("修改后的原对象:", obj1)
-console.log("深拷贝对象:", obj2)
+console.log('修改后的原对象:', obj1)
+console.log('深拷贝对象:', obj2)
 
 // 循环引用测试
-console.log("\n循环引用测试：")
-const obj3 = { name: "循环引用测试" }
+console.log('\n循环引用测试：')
+const obj3 = { name: '循环引用测试' }
 obj3.self = obj3 // 创建循环引用
 
 try {
   const obj4 = deepCopy(obj3)
-  console.log("循环引用拷贝成功！")
-  console.log("原对象.self === 原对象:", obj3.self === obj3)
-  console.log("拷贝对象.self === 拷贝对象:", obj4.self === obj4)
+  console.log('循环引用拷贝成功！')
+  console.log('原对象.self === 原对象:', obj3.self === obj3)
+  console.log('拷贝对象.self === 拷贝对象:', obj4.self === obj4)
 } catch (error) {
-  console.error("循环引用拷贝失败:", error.message)
+  console.error('循环引用拷贝失败:', error.message)
 }
