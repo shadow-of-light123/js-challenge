@@ -1,12 +1,4 @@
 {
-  "terminal.integrated.defaultProfile.windows": "Command Prompt",
-  "terminal.integrated.profiles.windows": {
-    "Command Prompt": {
-      "path": "cmd.exe",
-      "args": []
-    }
-  },
-
   // 1. 设置默认格式化器为 Prettier
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // 2. 保存时自动格式化（关键）
