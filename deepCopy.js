@@ -16,7 +16,7 @@
  * 3. 结构创建：根据原对象类型创建新的空结构（对象或数组）
  * 4. 递归复制：遍历原对象属性，递归拷贝每个属性值
  */
-function deepCopy(obj, map = new Map()) {
+function deepCopy(obj, map = new WeakMap()) {
   // 1. 边界条件处理
   // 如果不是对象或为null/undefined，直接返回原值
   // 基本类型（number/string/boolean/null/undefined/symbol/bigint）会直接返回
