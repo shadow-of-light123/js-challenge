@@ -18,6 +18,7 @@ function debounce(fn, wait) {
     // 设置新的定时器，延迟wait毫秒后执行
     timer = setTimeout(() => {
       // 执行原始函数，正确传递this上下文和参数
+      // apply将args数组展开为一个个独立的参数传给原函数，确保参数正确
       fn.apply(this, args)
     }, wait)
   }
