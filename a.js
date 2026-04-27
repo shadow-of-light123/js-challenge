@@ -1,10 +1,9 @@
-function throttle(fn, wait) {
-  let startTime = 0
-  return function (...args) {
-    let nowTime = Date.now()
-    if (nowTime - startTime >= wait) {
-      startTime = nowTime
-      return fn.apply(this, args)
-    }
+class Person {
+  constructor(name, age) {
+    this.name = name
+    this.age = age
   }
 }
+
+const p = new Person('小明', 18)
+console.log(p)
