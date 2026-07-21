@@ -151,12 +151,14 @@ export class myPromise {
       }
 
       const values = []
+      let count = 0
       promises.forEach((promise, index) => {
-        promise.then(
+        myPromise.resolve(promise).then(
           (res) => {
             // 使用索引，确保传入promise的顺序不会受pending的时间而打乱
-            values.splice(index, 0, res)
-            if (values.length === promises.length) {
+            values[index] = res
+            count++
+            if (count === promises.length) {
               resolve(values)
             }
           },
@@ -176,15 +178,18 @@ export class myPromise {
       }
 
       const values = []
+      let count = 0
       promises.forEach((promise, index) => {
-        promise.then(
+        myPromise.resolve(promise).then(
           (res) => {
-            values.splice(index, 0, { status: 'fulfilled', res })
-            if (values.length === promises.length) resolve(values)
+            values[index] = { status: 'fulfilled', value: res }
+            count++
+            if (count === promises.length) resolve(values)
           },
           (err) => {
-            values.splice(index, 0, { status: 'rejected', err })
-            if (values.length === promises.length) resolve(values)
+            values[index] = { status: 'rejected', reason: err }
+            count++
+            if (count === promises.length) resolve(values)
           },
         )
       })
@@ -207,20 +212,22 @@ export class myPromise {
   }
 
   static any(promises) {
-    return new Promise((resolve, reject) => {
+    return new myPromise((resolve, reject) => {
       if (promises.length === 0) {
         return reject(new AggregateError([], 'All promises were rejected'))
       }
 
       const reasons = []
+      let count = 0
       promises.forEach((promise, index) => {
-        promise.then(
+        myPromise.resolve(promise).then(
           (res) => {
             resolve(res)
           },
           (err) => {
-            reasons.splice(index, 0, err)
-            if (reasons.length === promises.length) {
+            reasons[index] = err
+            count++
+            if (count === promises.length) {
               reject(new AggregateError(reasons, 'All promises were rejected'))
             }
           },
