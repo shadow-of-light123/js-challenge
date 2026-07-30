@@ -1,1 +1,5 @@
-console.log(1/3);
+class a {
+  constructor(capacity) {
+    this.map = new Map()
+  }
+}
