@@ -1,5 +1,1 @@
-class a {
-  constructor(capacity) {
-    this.map = new Map()
-  }
-}
+console.log(Math.sqrt(15))
